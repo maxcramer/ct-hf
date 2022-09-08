@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import Header from './Header';
-import PropertyCard from './PropertyCard';
+import { useState, useEffect } from "react";
+import Header from "./Header";
+import PropertyCard from "./PropertyCard";
+import SearchBox from "./SearchBox";
 
 function App() {
   const [properties, setProperties] = useState();
@@ -10,7 +11,7 @@ function App() {
 
   useEffect(() => {
     const fetchPropertyData = async () => {
-      const response = await fetch('/property-data.json');
+      const response = await fetch("/property-data.json");
       const json = await response.json();
 
       setProperties(json.result.properties.elements);
@@ -22,9 +23,12 @@ function App() {
   return (
     <div className="container mx-auto my-5">
       <Header />
-
+      <SearchBox />
       <div className="grid grid-cols-1 gap-4 mt-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {!!properties && properties.map((property) => <PropertyCard key={property.property_id} property={property} />)}
+        {!!properties &&
+          properties.map((property) => (
+            <PropertyCard key={property.property_id} property={property} />
+          ))}
       </div>
     </div>
   );

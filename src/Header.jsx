@@ -7,7 +7,7 @@ function Header() {
         Posh Properties
       </h1>
 
-      <SearchBox />
+      {/* <SearchBox /> */}
     </header>
   );
 };
